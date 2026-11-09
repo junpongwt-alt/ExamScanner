@@ -1,5 +1,5 @@
 /* Exam Scanner service worker. เปลี่ยนเลขเวอร์ชันด้านล่างทุกครั้งที่อัปเดต index.html เพื่อให้เครื่องผู้ใช้โหลดของใหม่ */
-const CACHE = 'exam-scanner-v1';
+const CACHE = 'exam-scanner-v4';
 const CORE = ['./', './index.html', './manifest.json', './icons/icon-192.png', './icons/icon-512.png', './icons/maskable-512.png', './icons/apple-touch-icon.png'];
 const FONT_HOSTS = ['fonts.googleapis.com', 'fonts.gstatic.com'];
 
