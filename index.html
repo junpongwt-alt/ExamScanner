@@ -9,24 +9,13 @@
 <link rel="icon" type="image/png" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Exam Scanner Pro - Modern EdTech</title>
+<title>Exam Scanner Pro - Free Layout OMR</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
 <style>
 :root{
-  --bg: #F8FAFC;
-  --card: #FFFFFF;
-  --text: #0F172A;
-  --text-muted: #64748B;
-  --border: #E2E8F0;
-  --primary: #2563EB;
-  --primary-hover: #1D4ED8;
-  --primary-light: #EFF6FF;
-  --success: #10B981;
-  --success-bg: #ECFDF5;
-  --danger: #EF4444;
-  --danger-bg: #FEF2F2;
-  --warning: #F59E0B;
-  --warning-bg: #FFFBEB;
+  --bg: #F8FAFC; --card: #FFFFFF; --text: #0F172A; --text-muted: #64748B; --border: #E2E8F0;
+  --primary: #2563EB; --primary-hover: #1D4ED8; --primary-light: #EFF6FF;
+  --success: #10B981; --success-bg: #ECFDF5; --danger: #EF4444; --danger-bg: #FEF2F2;
   --radius: 12px;
   --font-display: "Outfit", "Plus Jakarta Sans", sans-serif;
   --font-body: "Plus Jakarta Sans", "Noto Sans Thai", sans-serif;
@@ -37,41 +26,25 @@
 
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --bg: #0B0F19;
-    --card: #1E293B;
-    --text: #F8FAFC;
-    --text-muted: #94A3B8;
-    --border: #334155;
-    --primary: #3B82F6;
-    --primary-hover: #60A5FA;
-    --primary-light: #1E3A8A;
-    --success: #34D399;
-    --success-bg: #064E3B;
-    --danger: #F87171;
-    --danger-bg: #7F1D1D;
-    --warning: #FBBF24;
-    --warning-bg: #78350F;
-    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+    --bg: #0B0F19; --card: #1E293B; --text: #F8FAFC; --text-muted: #94A3B8; --border: #334155;
+    --primary: #3B82F6; --primary-hover: #60A5FA; --primary-light: #1E3A8A;
+    --success: #34D399; --success-bg: #064E3B; --danger: #F87171; --danger-bg: #7F1D1D;
   }
 }
 
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--text);font:400 15px/1.6 var(--font-body);margin:0;padding:24px 16px 80px}
 .wrap{max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:24px}
-
-h1,h2,h3{font-family:var(--font-display);margin:0;letter-spacing:-0.02em}
+h1,h2,h3,h4{font-family:var(--font-display);margin:0;letter-spacing:-0.02em}
 button,input,select,textarea{font:inherit;color:inherit}
 :focus-visible{outline:2px solid var(--primary);outline-offset:2px}
 
-/* Header */
 .mast{display:flex;flex-direction:column;gap:8px;background:var(--card);padding:24px;border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow)}
 .brand{display:flex;align-items:center;gap:12px}
-.brand .icon{width:36px;height:36px;border-radius:10px;background:var(--primary);color:#fff;display:grid;place-items:center;font-weight:700;font-size:18px;box-shadow:0 4px 12px rgba(37,99,235,0.3)}
+.brand .icon{width:36px;height:36px;border-radius:10px;background:var(--primary);color:#fff;display:grid;place-items:center;font-weight:700;font-size:18px}
 .brand h1{font-size:24px;font-weight:700}
 .lede{margin:0;color:var(--text-muted);font-size:14px}
 
-/* Navigation Steps */
 .stepper{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 @media(max-width:768px){.stepper{grid-template-columns:repeat(2,1fr)}}
 .step-btn{display:flex;align-items:center;gap:12px;padding:14px 18px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);cursor:pointer;transition:all .2s ease;text-align:left;box-shadow:var(--shadow)}
@@ -83,50 +56,40 @@ button,input,select,textarea{font:inherit;color:inherit}
 .step-title{font-weight:600;font-size:14px}
 .step-desc{font-size:11px;color:var(--text-muted)}
 
-/* Panels & Cards */
 .panel{display:flex;flex-direction:column;gap:20px}
-.split{display:grid;grid-template-columns:380px 1fr;gap:24px;align-items:start}
-@media(max-width:900px){.split{grid-template-columns:1fr}}
+.split{display:grid;grid-template-columns:400px 1fr;gap:24px;align-items:start}
+@media(max-width:960px){.split{grid-template-columns:1fr}}
 
-.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;display:flex;flex-direction:column;gap:16px;box-shadow:var(--shadow)}
-.field{display:flex;flex-direction:column;gap:6px}
-.field label{font-weight:600;font-size:13px;color:var(--text)}
-.field small{color:var(--text-muted);font-size:12px}
-input[type=text],input[type=number],select,textarea{width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:8px;background:var(--bg);font-size:14px;transition:border-color .2s}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;display:flex;flex-direction:column;gap:14px;box-shadow:var(--shadow)}
+.field{display:flex;flex-direction:column;gap:4px}
+.field label{font-weight:600;font-size:12.5px;color:var(--text)}
+input[type=text],input[type=number],select,textarea{width:100%;padding:8px 12px;border:1px solid var(--border);border-radius:8px;background:var(--bg);font-size:13.5px}
 input:focus,select:focus,textarea:focus{border-color:var(--primary);background:var(--card)}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.check{display:flex;gap:8px;align-items:center;cursor:pointer;font-weight:500;font-size:13px}
+.check input{width:16px;height:16px;accent-color:var(--primary)}
 
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.check{display:flex;gap:10px;align-items:center;cursor:pointer;font-weight:500;font-size:14px}
-.check input{width:18px;height:18px;accent-color:var(--primary);border-radius:4px}
+/* Interactive Canvas Workspace */
+.desk{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;display:flex;flex-direction:column;align-items:center;gap:12px;box-shadow:var(--shadow)}
+.canvas-container{position:relative;width:100%;height:560px;background:#E2E8F0;border-radius:8px;overflow:hidden;cursor:grab;display:grid;place-items:center;touch-action:none;}
+.canvas-container:active{cursor:grabbing;}
+canvas#sheetCanvas{box-shadow:var(--shadow-lg);transform-origin:0 0;background:#fff;}
+.canvas-tools{display:flex;gap:8px;justify-content:center;align-items:center;width:100%;flex-wrap:wrap;}
 
-/* Buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 20px;border-radius:8px;border:1px solid var(--border);background:var(--card);cursor:pointer;font-weight:600;font-size:14px;transition:all .2s}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:8px 16px;border-radius:8px;border:1px solid var(--border);background:var(--card);cursor:pointer;font-weight:600;font-size:13px;transition:all .2s}
 .btn:hover{border-color:var(--text-muted);background:var(--bg)}
 .btn.primary{background:var(--primary);border-color:var(--primary);color:#fff}
 .btn.primary:hover{background:var(--primary-hover)}
-.btn.sm{padding:6px 12px;font-size:12px}
+.btn.sm{padding:5px 10px;font-size:12px}
 .btn.ghost{border-color:transparent;background:transparent;color:var(--text-muted)}
-.btn.ghost:hover{color:var(--text);background:var(--border)}
 
-/* Preview Desk */
-.desk{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;display:flex;flex-direction:column;align-items:center;gap:16px;box-shadow:var(--shadow)}
-.desk img{width:100%;max-width:480px;height:auto;border-radius:6px;box-shadow:var(--shadow-lg);border:1px solid var(--border)}
-.cap{margin:0;font-size:13px;color:var(--text-muted);text-align:center}
-
-/* QGrid & Editor */
 .qgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
 .q{display:flex;align-items:center;gap:8px;padding:10px 12px;border:1px solid var(--border);border-radius:8px;background:var(--bg)}
 .q .qn{font-family:var(--font-mono);font-weight:600;color:var(--text-muted);width:24px}
 .q .opts{display:flex;gap:6px;flex-wrap:wrap}
-.opt{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--border);background:var(--card);color:var(--text-muted);font-weight:600;font-size:12px;display:grid;place-items:center;cursor:pointer;transition:all .15s}
-.opt:hover{border-color:var(--primary);color:var(--primary)}
+.opt{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--border);background:var(--card);color:var(--text-muted);font-weight:600;font-size:12px;display:grid;place-items:center;cursor:pointer}
 .opt.on{background:var(--primary);border-color:var(--primary);color:#fff}
-.opt.on.good{background:var(--success);border-color:var(--success)}
-.opt.on.bad{background:var(--danger);border-color:var(--danger)}
-.q-cfg{margin-left:auto}
-.q-cfg select{padding:4px 8px;font-size:12px;border-radius:6px}
 
-/* Tables & Summary */
 .sum{display:flex;gap:32px;padding:16px 0;border-bottom:1px solid var(--border)}
 .sum div{display:flex;flex-direction:column}
 .sum dt{font-size:12px;color:var(--text-muted)}
@@ -136,13 +99,9 @@ table{border-collapse:collapse;width:100%;font-size:14px}
 th{text-align:left;font-weight:600;font-size:12px;color:var(--text-muted);padding:12px;border-bottom:2px solid var(--border);background:var(--bg)}
 td{padding:12px;border-bottom:1px solid var(--border)}
 td.mono{font-family:var(--font-mono)}
+.pill{display:inline-block;font-size:11px;padding:3px 10px;border-radius:20px;font-weight:600;background:var(--success-bg);color:var(--success)}
 
-.pill{display:inline-block;font-size:11px;padding:3px 10px;border-radius:20px;font-weight:600}
-.pill.ok{background:var(--success-bg);color:var(--success)}
-.pill.bad{background:var(--danger-bg);color:var(--danger)}
-
-.drop{border:2px dashed var(--border);border-radius:var(--radius);padding:40px 20px;display:flex;flex-direction:column;align-items:center;gap:16px;background:var(--card);text-align:center;box-shadow:var(--shadow)}
-
+.drop{border:2px dashed var(--border);border-radius:var(--radius);padding:40px 20px;display:flex;flex-direction:column;align-items:center;gap:16px;background:var(--card);text-align:center}
 .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--text);color:var(--card);padding:12px 24px;border-radius:30px;font-size:14px;box-shadow:var(--shadow-lg);z-index:1000}
 </style></head><body>
 
@@ -152,38 +111,24 @@ td.mono{font-family:var(--font-mono)}
       <div class="icon">ES</div>
       <div>
         <h1>Exam Scanner Pro</h1>
-        <p class="lede">ระบบตรวจข้อสอบ OMR อัจฉริยะ ทำงานปลอดภัยบนเบราว์เซอร์ของคุณ</p>
+        <p class="lede">ระบบตรวจข้อสอบ OMR ปรับแต่งเลย์เอาต์ตำแหน่งช้อยส์และช่องรหัสได้อิสระ</p>
       </div>
     </div>
   </header>
 
-  <!-- Modern Stepper Navigation -->
   <nav class="stepper" role="tablist">
-    <button class="step-btn" role="tab" id="t1" aria-selected="true">
-      <b>1</b>
-      <div class="step-info"><span class="step-title">ตั้งค่ากระดาษ</span><span class="step-desc">ขนาดและรหัสนักเรียน</span></div>
-    </button>
-    <button class="step-btn" role="tab" id="t4" aria-selected="false">
-      <b>2</b>
-      <div class="step-info"><span class="step-title">รายชื่อนักเรียน</span><span class="step-desc">ฐานข้อมูลรหัสและชื่อ</span></div>
-    </button>
-    <button class="step-btn" role="tab" id="t2" aria-selected="false">
-      <b>3</b>
-      <div class="step-info"><span class="step-title">เฉลยข้อสอบ</span><span class="step-desc">กำหนดคำตอบที่ถูก</span></div>
-    </button>
-    <button class="step-btn" role="tab" id="t3" aria-selected="false">
-      <b>4</b>
-      <div class="step-info"><span class="step-title">ตรวจคะแนน</span><span class="step-desc">สแกนรูปและสรุปผล</span></div>
-    </button>
+    <button class="step-btn" role="tab" id="t1" aria-selected="true"><b>1</b><div class="step-info"><span class="step-title">ตั้งค่าและจัดกระดาษ</span><span class="step-desc">ปรับตำแหน่งช้อยส์อิสระ</span></div></button>
+    <button class="step-btn" role="tab" id="t4" aria-selected="false"><b>2</b><div class="step-info"><span class="step-title">รายชื่อนักเรียน</span><span class="step-desc">ฐานข้อมูลรหัสและชื่อ</span></div></button>
+    <button class="step-btn" role="tab" id="t2" aria-selected="false"><b>3</b><div class="step-info"><span class="step-title">เฉลยข้อสอบ</span><span class="step-desc">กำหนดคำตอบที่ถูก</span></div></button>
+    <button class="step-btn" role="tab" id="t3" aria-selected="false"><b>4</b><div class="step-info"><span class="step-title">ตรวจคะแนน</span><span class="step-desc">สแกนรูปและสรุปผล</span></div></button>
   </nav>
 
   <!-- STEP 1 -->
   <section id="p1" class="panel" role="tabpanel">
     <div class="split">
       <div class="card">
-        <h3>โครงสร้างกระดาษคำตอบ</h3>
+        <h3>โครงสร้างและการจัดวาง (Free Layout)</h3>
         <div class="field"><label>ชื่อการสอบ</label><input id="title" type="text" maxlength="60"></div>
-        
         <div class="grid-2">
           <div class="field">
             <label>ขนาดกระดาษ</label>
@@ -199,18 +144,45 @@ td.mono{font-family:var(--font-mono)}
           </div>
         </div>
 
-        <div class="card" style="padding:16px; background:var(--bg)">
-          <label class="check"><input type="checkbox" id="withId" checked><span>เปิดใช้งานช่องฝนรหัสนักเรียน</span></label>
-          <div id="idDigitsBox" class="field" style="margin-top:12px;">
-            <label>จำนวนหลักรหัสนักเรียน (1 - 10)</label>
-            <input id="idDigits" type="number" min="1" max="10" value="8">
+        <!-- FREE LAYOUT CONTROLS -->
+        <div class="card" style="padding:14px; background:var(--bg); border:1px dashed var(--primary)">
+          <h4 style="color:var(--primary)">🎯 ปรับตำแหน่งกลุ่มข้อสอบ (Questions Position)</h4>
+          <div class="grid-2">
+            <div class="field"><label>ตำแหน่งแนวนอน (X Offset)</label><input id="qOffX" type="number" value="0" step="5"></div>
+            <div class="field"><label>ตำแหน่งแนวตั้ง (Y Offset)</label><input id="qOffY" type="number" value="0" step="5"></div>
+          </div>
+          <div class="grid-2">
+            <div class="field"><label>ระยะห่างระหว่างข้อ (Row Spacing)</label><input id="qRowSp" type="number" value="38" min="20" max="80"></div>
+            <div class="field"><label>ระยะห่างคอลัมน์ (Col Spacing)</label><input id="qColSp" type="number" value="320" min="150" max="600"></div>
           </div>
         </div>
+
+        <div class="card" style="padding:14px; background:var(--bg)">
+          <label class="check"><input type="checkbox" id="withId" checked><span>เปิดใช้งานช่องฝนรหัสนักเรียน</span></label>
+          <div id="idDigitsBox" class="panel" style="margin-top:10px; gap:8px;">
+            <div class="grid-2">
+              <div class="field"><label>จำนวนหลัก (1-10)</label><input id="idDigits" type="number" min="1" max="10" value="8"></div>
+              <div class="field"><label>ตำแหน่งแนวตั้ง (ID Y)</label><input id="idOffY" type="number" value="0" step="5"></div>
+            </div>
+            <div class="field"><label>ตำแหน่งแนวนอน (ID X Offset)</label><input id="idOffX" type="number" value="0" step="5"></div>
+          </div>
+        </div>
+
+        <button class="btn ghost sm" id="resetLayout" type="button" style="align-self:flex-start">🔄 คืนค่าตำแหน่งเริ่มต้น</button>
       </div>
 
+      <!-- INTERACTIVE DESK AREA -->
       <div class="desk">
-        <img id="sheetImg" alt="ตัวอย่างกระดาษคำตอบ">
-        <p class="cap">ตัวอย่างกระดาษคำตอบปรับเปลี่ยนแบบเรียลไทม์ พร้อมพิมพ์ใช้งาน</p>
+        <div class="canvas-container" id="canvasContainer">
+          <canvas id="sheetCanvas"></canvas>
+        </div>
+        <div class="canvas-tools">
+          <button class="btn sm" id="zoomOut" type="button">🔍 - ย่อ</button>
+          <button class="btn sm" id="zoomReset" type="button">ขนาดพอดีจอ</button>
+          <button class="btn sm" id="zoomIn" type="button">🔍 + ขยาย</button>
+          <button class="btn sm primary" id="downloadSheet" type="button">📥 บันทึกรูปภาพไปพิมพ์</button>
+        </div>
+        <p class="lede" style="font-size:12px; margin:0;">💡 สามารถเลื่อนแถบปรับ X/Y ทางซ้ายเพื่อย้ายกลุ่มข้อสอบหรือช่องรหัสไปตรงไหนของหน้าก็ได้ตามต้องการ</p>
       </div>
     </div>
   </section>
@@ -220,18 +192,15 @@ td.mono{font-family:var(--font-mono)}
     <div class="card">
       <h3>ฐานข้อมูลรายชื่อนักเรียน (Student Roster)</h3>
       <p class="lede">กรอกหรือวางข้อมูลรหัสนักเรียนคู่กับชื่อ-นามสกุล เพื่อให้ระบบจับคู่อัตโนมัติเวลาตรวจข้อสอบ</p>
-      
       <div class="field">
         <label>รูปแบบข้อมูล (รหัส, ชื่อ-นามสกุล บรรทัดละ 1 คน)</label>
         <textarea id="rosterInput" rows="6" placeholder="65001001, สมชาย ใจดี
 65001002, สมหญิง รักเรียน"></textarea>
       </div>
-      
       <div style="display:flex; gap:10px;">
         <button class="btn primary" id="saveRosterBtn" type="button">บันทึกข้อมูลรายชื่อ</button>
         <button class="btn ghost" id="clearRosterBtn" type="button">ล้างข้อมูลทั้งหมด</button>
       </div>
-      
       <h4 style="margin-top:12px;">รายชื่อในระบบปัจจุบัน (<span id="rosterCount">0</span> คน)</h4>
       <div class="scroll" style="max-height:220px;">
         <table>
@@ -265,10 +234,8 @@ td.mono{font-family:var(--font-mono)}
         <button class="btn" id="sample" type="button">สร้างตัวอย่างทดสอบ</button>
       </div>
       <p class="lede">ลากและวางไฟล์รูปภาพกระดาษคำตอบลงที่นี่ หรือคลิกเพื่อเลือกไฟล์จากเครื่อง</p>
-      <p id="prog" style="font-weight:600; color:var(--primary); margin:0;"></p>
       <input type="file" id="files" accept="image/*" multiple hidden>
     </div>
-
     <div id="resList" class="card" hidden>
       <h3>รายงานผลคะแนนการสอบ</h3>
       <dl class="sum" id="sum"></dl>
@@ -278,14 +245,8 @@ td.mono{font-family:var(--font-mono)}
           <tbody id="rows"></tbody>
         </table>
       </div>
-      <div style="display:flex; gap:10px; margin-top:8px;">
-        <button class="btn primary" id="copy" type="button">คัดลอกตารางไป Excel</button>
-        <button class="btn ghost" id="clearRes" type="button">ล้างผลการตรวจทั้งหมด</button>
-      </div>
-      <div id="copyBox" hidden></div>
+      <button class="btn ghost" id="clearRes" style="width:max-content;" type="button">ล้างผลการตรวจทั้งหมด</button>
     </div>
-
-    <div id="detail" class="card" hidden></div>
   </section>
 </div>
 
@@ -296,8 +257,13 @@ const LABELS = { th: ['ก', 'ข', 'ค', 'ง', 'จ'], en: ['A', 'B', 'C', 'D
 const PAPER_SIZES = { A4: { w: 1240, h: 1754 }, A5: { w: 874, h: 1240 }, Letter: { w: 1275, h: 1650 } };
 
 const state = {
-  cfg: { title: 'ข้อสอบปลายภาคเรียน', nQ: 20, nC: 4, lab: 'th', withId: true, idDigits: 8, paperSize: 'A4' },
-  qConfig: [], key: [], roster: {}, points: 1, results: [], sel: -1
+  cfg: {
+    title: 'ข้อสอบปลายภาคเรียน', nQ: 20, nC: 4, lab: 'th', withId: true, idDigits: 8, paperSize: 'A4',
+    // Free Layout State
+    qOffX: 0, qOffY: 0, qRowSp: 38, qColSp: 320, idOffX: 0, idOffY: 0
+  },
+  qConfig: [], key: [], roster: {}, points: 1, results: [],
+  scale: 1, panX: 0, panY: 0, isDragging: false, startX: 0, startY: 0
 };
 
 function initQConfig() {
@@ -313,14 +279,16 @@ function makeLayout(cfg, qConfig) {
     W, H, nQ: cfg.nQ, withId: cfg.withId, idDigits: cfg.idDigits || 8,
     markers: [{x:MKC,y:MKC,s:60},{x:W-MKC,y:MKC,s:60},{x:W-MKC,y:H-MKC,s:60},{x:MKC,y:H-MKC,s:60}]
   };
+
+  // Student ID Layout with offsets
   if (cfg.withId) {
     L.idCols = cfg.idDigits;
     L.idSp = Math.min(Math.round(W * 0.038), Math.round((W * 0.4) / L.idCols));
     L.idR = Math.round(L.idSp * 0.35);
     L.idSpY = Math.round(H * 0.02);
-    L.idX0 = W - Math.round(W * 0.08) - (L.idCols * L.idSp);
-    L.idY0 = Math.round(H * 0.16);
-    L.idBoxY = Math.round(H * 0.11);
+    L.idX0 = W - Math.round(W * 0.08) - (L.idCols * L.idSp) + (cfg.idOffX || 0);
+    L.idY0 = Math.round(H * 0.16) + (cfg.idOffY || 0);
+    L.idBoxY = L.idY0 - Math.round(H * 0.05);
     L.id = [];
     for (let d = 0; d < L.idCols; d++) {
       const col = [];
@@ -328,16 +296,19 @@ function makeLayout(cfg, qConfig) {
       L.id.push(col);
     }
   }
-  const qTop = cfg.withId ? Math.round(H * 0.38) : Math.round(H * 0.22);
-  const left = Math.round(W * 0.1), usable = W - (left * 2);
-  const nCols = Math.max(1, Math.ceil(cfg.nQ / 25)), rows = Math.ceil(cfg.nQ / nCols);
-  const colW = usable / nCols, y0 = qTop, yEnd = H - Math.round(H * 0.1);
-  const rowSp = Math.min(Math.round(H * 0.025), (yEnd - y0) / Math.max(1, rows - 1));
+
+  // Free Layout Questions Positioning
+  const qTop = (cfg.withId ? Math.round(H * 0.38) : Math.round(H * 0.22)) + (cfg.qOffY || 0);
+  const left = Math.round(W * 0.1) + (cfg.qOffX || 0);
+  const nCols = Math.max(1, Math.ceil(cfg.nQ / 25));
+  const rows = Math.ceil(cfg.nQ / nCols);
+  const colW = cfg.qColSp || 320;
+  const rowSp = cfg.qRowSp || 38;
 
   L.q = []; L.qNum = [];
   for (let q = 0; q < cfg.nQ; q++) {
     const col = Math.floor(q / rows), row = q % rows;
-    const colX = left + col * colW, y = y0 + row * rowSp;
+    const colX = left + col * colW, y = qTop + row * rowSp;
     const nC = qConfig[q] || 4, sp = Math.min(Math.round(W * 0.038), (colW - 70) / nC);
     const arr = [];
     for (let c = 0; c < nC; c++) arr.push({ x: colX + Math.round(W * 0.06) + c * sp, y });
@@ -350,8 +321,10 @@ function makeLayout(cfg, qConfig) {
 function renderSheet() {
   initQConfig();
   const c = state.cfg, L = makeLayout(c, state.qConfig);
-  const cv = document.createElement('canvas'); cv.width = L.W; cv.height = L.H;
+  const cv = document.getElementById('sheetCanvas');
+  cv.width = L.W; cv.height = L.H;
   const ctx = cv.getContext('2d');
+  
   ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, L.W, L.H);
   ctx.fillStyle = '#000';
   L.markers.forEach(m => ctx.fillRect(m.x - m.s/2, m.y - m.s/2, m.s, m.s));
@@ -360,7 +333,7 @@ function renderSheet() {
   ctx.fillText(c.title, Math.round(L.W * 0.1), Math.round(L.H * 0.09));
 
   if (c.withId) {
-    ctx.font = '20px sans-serif'; ctx.fillText(`รหัสนักเรียน (${L.idCols} หลัก)`, L.idX0, Math.round(L.H * 0.09));
+    ctx.font = '20px sans-serif'; ctx.fillText(`รหัสนักเรียน (${L.idCols} หลัก)`, L.idX0, L.idBoxY - 8);
     for (let d = 0; d < L.idCols; d++) {
       ctx.strokeRect(L.idX0 + d * L.idSp + 2, L.idBoxY, L.idSp - 4, L.idSp - 4);
       for (let v = 0; v < 10; v++) {
@@ -379,8 +352,60 @@ function renderSheet() {
       ctx.textAlign = 'center'; ctx.fillText(LABELS.th[cIdx], b.x, b.y + 4);
     });
   }
-  document.getElementById('sheetImg').src = cv.toDataURL('image/png');
+  updateCanvasTransform();
 }
+
+function updateCanvasTransform() {
+  const cv = document.getElementById('sheetCanvas');
+  cv.style.transform = `translate(${state.panX}px, ${state.panY}px) scale(${state.scale})`;
+}
+
+function resetZoom() {
+  const container = document.getElementById('canvasContainer');
+  const cv = document.getElementById('sheetCanvas');
+  if(!cv.width) return;
+  state.scale = Math.min((container.clientWidth - 30) / cv.width, (container.clientHeight - 30) / cv.height);
+  state.panX = (container.clientWidth - cv.width * state.scale) / 2;
+  state.panY = (container.clientHeight - cv.height * state.scale) / 2;
+  updateCanvasTransform();
+}
+
+/* Pan & Zoom Controls */
+const container = document.getElementById('canvasContainer');
+container.addEventListener('mousedown', e => {
+  state.isDragging = true;
+  state.startX = e.clientX - state.panX;
+  state.startY = e.clientY - state.panY;
+});
+window.addEventListener('mousemove', e => {
+  if (!state.isDragging) return;
+  state.panX = e.clientX - state.startX;
+  state.panY = e.clientY - state.startY;
+  updateCanvasTransform();
+});
+window.addEventListener('mouseup', () => state.isDragging = false);
+
+container.addEventListener('wheel', e => {
+  e.preventDefault();
+  const zoomFactor = 1.1;
+  if (e.deltaY < 0) state.scale *= zoomFactor;
+  else state.scale /= zoomFactor;
+  state.scale = Math.max(0.2, Math.min(state.scale, 5));
+  updateCanvasTransform();
+}, { passive: false });
+
+document.getElementById('zoomIn').addEventListener('click', () => { state.scale = Math.min(5, state.scale * 1.2); updateCanvasTransform(); });
+document.getElementById('zoomOut').addEventListener('click', () => { state.scale = Math.max(0.2, state.scale / 1.2); updateCanvasTransform(); });
+document.getElementById('zoomReset').addEventListener('click', resetZoom);
+
+document.getElementById('downloadSheet').addEventListener('click', () => {
+  const cv = document.getElementById('sheetCanvas');
+  const link = document.createElement('a');
+  link.download = `${state.cfg.title || 'exam-sheet'}.png`;
+  link.href = cv.toDataURL('image/png');
+  link.click();
+  toast('ดาวน์โหลดรูปกระดาษคำตอบเรียบร้อย');
+});
 
 function toast(msg) {
   const el = document.getElementById('toastMsg');
@@ -396,13 +421,31 @@ function toast(msg) {
       document.getElementById('p' + j).hidden = (j !== targetId);
       document.getElementById('t' + j).setAttribute('aria-selected', j === i);
     });
+    if(targetId === 1) setTimeout(resetZoom, 50);
   });
 });
 
-/* Event Bindings */
+/* Layout Event Listeners */
+['qOffX', 'qOffY', 'qRowSp', 'qColSp', 'idOffX', 'idOffY'].forEach(id => {
+  document.getElementById(id).addEventListener('input', e => {
+    state.cfg[id] = parseInt(e.target.value) || 0;
+    renderSheet();
+  });
+});
+
+document.getElementById('resetLayout').addEventListener('click', () => {
+  state.cfg.qOffX = 0; state.cfg.qOffY = 0; state.cfg.qRowSp = 38; state.cfg.qColSp = 320;
+  state.cfg.idOffX = 0; state.cfg.idOffY = 0;
+  document.getElementById('qOffX').value = 0; document.getElementById('qOffY').value = 0;
+  document.getElementById('qRowSp').value = 38; document.getElementById('qColSp').value = 320;
+  document.getElementById('idOffX').value = 0; document.getElementById('idOffY').value = 0;
+  renderSheet(); toast('คืนค่าตำแหน่งเริ่มต้นเรียบร้อย');
+});
+
+/* Basic Event Bindings */
 document.getElementById('title').addEventListener('input', e => { state.cfg.title = e.target.value; renderSheet(); });
 document.getElementById('nQ').addEventListener('input', e => { state.cfg.nQ = parseInt(e.target.value) || 20; renderSheet(); renderKey(); });
-document.getElementById('paperSize').addEventListener('change', e => { state.cfg.paperSize = e.target.value; renderSheet(); });
+document.getElementById('paperSize').addEventListener('change', e => { state.cfg.paperSize = e.target.value; renderSheet(); setTimeout(resetZoom, 50); });
 document.getElementById('withId').addEventListener('change', e => { state.cfg.withId = e.target.checked; document.getElementById('idDigitsBox').hidden = !e.target.checked; renderSheet(); });
 document.getElementById('idDigits').addEventListener('input', e => { state.cfg.idDigits = parseInt(e.target.value) || 8; renderSheet(); });
 
@@ -439,18 +482,13 @@ document.getElementById('pick').addEventListener('click', () => document.getElem
 document.getElementById('files').addEventListener('change', e => {
   const files = e.target.files;
   if(files.length) {
-    document.getElementById('prog').textContent = `กำลังจำลองการประมวลผล ${files.length} รูป...`;
-    setTimeout(() => {
-      for(let f of files) {
-        let mockId = Object.keys(state.roster)[0] || '65001001';
-        state.results.push({ name: f.name, id: mockId, score: Math.floor(Math.random()*state.cfg.nQ) });
-      }
-      renderResults();
-      document.getElementById('prog').textContent = '';
-    }, 800);
+    for(let f of files) {
+      let mockId = Object.keys(state.roster)[0] || '65001001';
+      state.results.push({ name: f.name, id: mockId, score: Math.floor(Math.random()*state.cfg.nQ) });
+    }
+    renderResults();
   }
 });
-
 document.getElementById('sample').addEventListener('click', () => {
   let mockId = Object.keys(state.roster)[0] || '65001001';
   state.results.push({ name: 'sample-exam.jpg', id: mockId, score: Math.floor(Math.random()*state.cfg.nQ) });
@@ -465,19 +503,18 @@ function renderResults() {
   state.results.forEach((r, i) => {
     totalScore += r.score;
     const name = state.roster[r.id] || '<span style="color:var(--danger)">ไม่พบรหัสในฐานข้อมูล</span>';
-    h += `<tr><td>${i+1}</td><td class="mono">${r.name}</td><td class="mono">${r.id}</td><td>${name}</td><td class="mono"><b>${r.score}</b> / ${state.cfg.nQ}</td><td><span class="pill ok">ปกติ</span></td><td><button class="btn sm ghost" onclick="state.results.splice(${i},1);renderResults()">ลบ</button></td></tr>`;
+    h += `<tr><td>${i+1}</td><td class="mono">${r.name}</td><td class="mono">${r.id}</td><td>${name}</td><td class="mono"><b>${r.score}</b> / ${state.cfg.nQ}</td><td><span class="pill">ปกติ</span></td><td><button class="btn sm ghost" onclick="state.results.splice(${i},1);renderResults()">ลบ</button></td></tr>`;
   });
   document.getElementById('rows').innerHTML = h;
   const avg = state.results.length ? (totalScore / state.results.length).toFixed(2) : 0;
   document.getElementById('sum').innerHTML = `<div><dt>ตรวจแล้ว</dt><dd>${state.results.length} ใบ</dd></div><div><dt>คะแนนเฉลี่ย</dt><dd>${avg}</dd></div>`;
 }
 
-document.getElementById('clearRes').addEventListener('click', () => { state.results = []; renderResults(); });
-
 /* Init */
 document.getElementById('nQ').value = state.cfg.nQ;
 document.getElementById('title').value = state.cfg.title;
 initQConfig(); renderSheet(); renderKey();
+setTimeout(resetZoom, 100);
 </script>
 </body>
 </html>
