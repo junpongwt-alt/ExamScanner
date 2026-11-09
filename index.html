@@ -53,8 +53,12 @@ button,input,select,textarea{font:inherit;color:inherit}
 .field{display:flex;flex-direction:column;gap:6px;min-width:0}
 .field label,.lbl{font-weight:600;font-size:14px}
 .field small{color:var(--ink2);font-size:12.5px}
-input[type=text],input[type=number],select,textarea{width:100%;padding:9px 11px;border:1px solid var(--bub);border-radius:6px;background:var(--paper);min-width:0}
+input[type=text],input[type=number],select{width:100%;padding:9px 11px;border:1px solid var(--bub);border-radius:6px;background:var(--paper);min-width:0}
 input[type=number]{font-family:var(--f-mono)}
+.seg{display:flex;border:1px solid var(--bub);border-radius:6px;overflow:hidden}
+.seg button{flex:1;padding:8px 6px;background:var(--paper);border:0;border-right:1px solid var(--bub);cursor:pointer;font-weight:500;color:var(--ink2);min-width:0}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--fill);color:var(--fill-ink)}
 .check{display:flex;gap:10px;align-items:flex-start;cursor:pointer}
 .check input{margin-top:5px;width:16px;height:16px;accent-color:var(--accent)}
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -69,10 +73,13 @@ input[type=number]{font-family:var(--f-mono)}
 .row{display:flex;gap:8px;align-items:stretch}
 .row input{flex:1}
 .stat{font:500 14px/1.4 var(--f-mono);color:var(--ink2);flex:1 1 200px}
+.stat b{color:var(--ink);font-weight:500}
 
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:9px 16px;border-radius:6px;border:1px solid var(--bub);background:var(--card);cursor:pointer;font-weight:500;white-space:nowrap}
 .btn:hover{border-color:var(--ink)}
 .btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn.sm{padding:5px 11px;font-size:13px}
 .btn.ghost{border-color:transparent;color:var(--ink2)}
 
 .qgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:6px;background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px}
@@ -80,46 +87,47 @@ input[type=number]{font-family:var(--f-mono)}
 .q .qn{font:500 13px/1 var(--f-mono);color:var(--ink2);width:26px;text-align:right;flex:none}
 .q .opts{display:flex;gap:4px;flex-wrap:wrap}
 .opt{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--bub);background:var(--card);color:var(--ink2);font:500 12px/1 var(--f-body);display:grid;place-items:center;cursor:pointer;padding:0;flex:none}
+.opt:hover{border-color:var(--ink);color:var(--ink)}
+.opt.on{background:var(--fill);border-color:var(--fill);color:var(--fill-ink)}
 .opt.on.good{background:var(--good);border-color:var(--good);color:#fff}
+.opt.on.bad{background:var(--bad);border-color:var(--bad);color:#fff}
+.opt.key{border:2px dashed var(--good);color:var(--good)}
+.q-cfg{display:flex;align-items:center;gap:4px;margin-left:auto}
 .q-cfg select{padding:2px 4px;font-size:11px;height:24px;width:auto}
 
 .drop{border:2px dashed var(--bub);border-radius:10px;padding:22px;display:flex;flex-direction:column;gap:12px;align-items:center;text-align:center;background:var(--card)}
 .card{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:18px 20px;display:flex;flex-direction:column;gap:14px;min-width:0}
-.hint{margin:0;font-size:13px;color:var(--ink2)}
-
-table{border-collapse:collapse;width:100%;font-size:14px}
-th{text-align:left;font-size:12.5px;color:var(--ink2);padding:6px 10px;border-bottom:1px solid var(--bub)}
-td{padding:8px 10px;border-bottom:1px solid var(--rule)}
-td.mono{font-family:var(--f-mono)}
+.toast{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:center;pointer-events:none;padding:16px}
+.toast div{background:var(--fill);color:var(--fill-ink);padding:10px 16px;border-radius:8px;font-size:14px;box-shadow:0 6px 20px rgba(0,0,0,.25)}
 </style></head><body>
 
 <div class="wrap">
   <header class="mast">
     <div class="brand"><span class="dot"></span><h1>Exam Scanner Pro</h1></div>
-    <p class="lede">ระบบตรวจข้อสอบ OMR แบบปรับขนาดรหัสนักเรียน และเชื่อมโยงรายชื่อนักเรียนอัตโนมัติ</p>
+    <p class="lede">ระบบตรวจข้อสอบ OMR ปรับขนาดกระดาษและกำหนดจำนวนตัวเลือกได้อย่างอิสระ</p>
   </header>
 
   <nav class="tabs" role="tablist">
-    <button role="tab" id="t1" aria-selected="true"><b>1</b>ตั้งค่ากระดาษ</button>
-    <button role="tab" id="t2" aria-selected="false"><b>2</b>ฐานข้อมูลนักเรียน</button>
-    <button role="tab" id="t3" aria-selected="false"><b>3</b>เฉลยข้อสอบ</button>
-    <button role="tab" id="t4" aria-selected="false"><b>4</b>ตรวจข้อสอบ</button>
+    <button role="tab" id="t1" aria-selected="true"><b>1</b>กระดาษคำตอบ</button>
+    <button role="tab" id="t2" aria-selected="false"><b>2</b>เฉลยและการตั้งค่าช้อยส์</button>
+    <button role="tab" id="t3" aria-selected="false"><b>3</b>ตรวจข้อสอบ</button>
   </nav>
 
-  <!-- STEP 1: PAPER & STUDENT ID CONFIG -->
+  <!-- STEP 1: SHEET DESIGN & PAPER SIZE -->
   <section id="p1" class="panel">
     <div class="split">
       <div class="ctl">
-        <h3>ตั้งค่ากระดาษคำตอบ</h3>
+        <h3>ตั้งค่ากระดาษและเลย์เอาต์</h3>
         <div class="field"><label for="title">ชื่อการสอบ</label><input id="title" type="text" maxlength="60"></div>
         
         <div class="grid-2">
           <div class="field">
             <label for="paperSize">ขนาดกระดาษ</label>
             <select id="paperSize">
-              <option value="A4">A4</option>
-              <option value="A5">A5</option>
-              <option value="Letter">Letter</option>
+              <option value="A4">A4 (210 x 297 mm)</option>
+              <option value="A5">A5 (148 x 210 mm)</option>
+              <option value="Letter">Letter (8.5 x 11 in)</option>
+              <option value="Custom">กำหนดขนาดเอง (px)</option>
             </select>
           </div>
           <div class="field">
@@ -128,27 +136,24 @@ td.mono{font-family:var(--f-mono)}
           </div>
         </div>
 
-        <!-- Dynamic Student ID Setup -->
-        <div class="field" style="border: 1px dashed var(--bub); padding: 10px; border-radius: 6px;">
-          <label class="check"><input type="checkbox" id="withId" checked><span>พิมพ์ช่องฝนรหัสนักเรียน</span></label>
-          <div id="idDigitsBox" class="field" style="margin-top: 8px;">
-            <label for="idDigits">จำนวนหลักรหัสนักเรียน (1 - 10 หลัก)</label>
-            <input id="idDigits" type="number" min="1" max="10" value="8">
-          </div>
+        <!-- Custom Paper Resolution -->
+        <div id="customSizeBox" class="grid-2" hidden>
+          <div class="field"><label for="pWidth">ความกว้าง (px)</label><input id="pWidth" type="number" value="1240"></div>
+          <div class="field"><label for="pHeight">ความสูง (px)</label><input id="pHeight" type="number" value="1754"></div>
         </div>
 
         <div class="grid-2">
           <div class="field">
             <label for="defaultC">ตัวเลือกเริ่มต้น</label>
             <select id="defaultC">
-              <option value="2">2 ตัวเลือก</option>
+              <option value="2">2 ตัวเลือก (ถูก/ผิด)</option>
               <option value="3">3 ตัวเลือก</option>
               <option value="4" selected>4 ตัวเลือก</option>
               <option value="5">5 ตัวเลือก</option>
             </select>
           </div>
           <div class="field">
-            <label for="labType">รูปแบบช้อยส์</label>
+            <label for="labType">รูปแบบตัวเลือก</label>
             <select id="labType">
               <option value="th">ก ข ค ง จ</option>
               <option value="en">A B C D E</option>
@@ -156,6 +161,19 @@ td.mono{font-family:var(--f-mono)}
             </select>
           </div>
         </div>
+
+        <div class="field">
+          <label for="nCols">จำนวนคอลัมน์บนกระดาษ</label>
+          <select id="nCols">
+            <option value="auto">อัตโนมัติ (Auto)</option>
+            <option value="1">1 คอลัมน์</option>
+            <option value="2">2 คอลัมน์</option>
+            <option value="3">3 คอลัมน์</option>
+            <option value="4">4 คอลัมน์</option>
+          </select>
+        </div>
+
+        <label class="check"><input type="checkbox" id="withId" checked><span>มีช่องฝนรหัสนักเรียน (8 หลัก)</span></label>
       </div>
 
       <div class="desk">
@@ -165,99 +183,86 @@ td.mono{font-family:var(--f-mono)}
     </div>
   </section>
 
-  <!-- STEP 2: STUDENT ROSTER DATABASE -->
+  <!-- STEP 2: ANSWER KEY & INDIVIDUAL CHOICE SETTING -->
   <section id="p2" class="panel" hidden>
-    <div class="card">
-      <h2>นำเข้าข้อมูลรายชื่อนักเรียน (Student Roster)</h2>
-      <p class="hint">ใส่ข้อมูลรหัสนักเรียนและชื่อ-นามสกุล เพื่อให้ระบบจับคู่รหัสที่อ่านได้จากกระดาษกับชื่อนักเรียนให้อัตโนมัติ</p>
-      
-      <div class="field">
-        <label for="rosterInput">วางข้อมูล (รูปแบบ: รหัส, ชื่อ-นามสกุล บรรทัดละ 1 คน)</label>
-        <textarea id="rosterInput" rows="8" placeholder="65001001, สมชาย ใจดี
-65001002, สมหญิง รักเรียน"></textarea>
-      </div>
-      
-      <div class="row">
-        <button class="btn primary" id="saveRosterBtn" type="button">บันทึกรายชื่อ</button>
-        <button class="btn ghost" id="clearRosterBtn" type="button">ล้างรายชื่อ</button>
-      </div>
-      
-      <h3>รายชื่อในระบบ (<span id="rosterCount">0</span> คน)</h3>
-      <div style="max-height: 200px; overflow-y: auto;">
-        <table>
-          <thead><tr><th>รหัสนักเรียน</th><th>ชื่อ - นามสกุล</th></tr></thead>
-          <tbody id="rosterTable"></tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- STEP 3: ANSWER KEY -->
-  <section id="p3" class="panel" hidden>
     <div class="bar">
       <div class="stat" id="keyCount"></div>
       <div class="field grow">
-        <label for="quick">พิมพ์เฉลยด่วน</label>
+        <label for="quick">พิมพ์เฉลยด่วน (เช่น กขคง หรือ ABCD)</label>
         <div class="row"><input id="quick" type="text"><button class="btn" id="quickGo" type="button">ใส่เฉลย</button></div>
       </div>
+      <div class="field"><label for="pts">คะแนน/ข้อ</label><input id="pts" type="number" step="0.25" style="width:80px" value="1"></div>
       <button class="btn ghost" id="keyClear" type="button">ล้างเฉลย</button>
     </div>
     
     <div class="card">
-      <h2>เฉลยและกำหนดช้อยส์รายข้อ</h2>
+      <h2>กำหนดเฉลยและจำนวนตัวเลือกรายข้อ (อิสระ)</h2>
+      <p class="hint">คุณสามารถปรับเปลี่ยนจำนวนตัวเลือก (2-5 ช้อยส์) แยกรายข้อได้อย่างอิสระผ่านเมนูด้านข้างของแต่ละข้อ</p>
       <div id="keyGrid" class="qgrid"></div>
     </div>
   </section>
 
-  <!-- STEP 4: SCAN & RESULTS -->
-  <section id="p4" class="panel" hidden>
+  <!-- STEP 3: SCANNING & RESULTS -->
+  <section id="p3" class="panel" hidden>
     <div class="drop">
-      <button class="btn primary" id="sampleScan" type="button">ทดสอบสแกนตัวอย่างกระดาษคำตอบ</button>
+      <button class="btn primary" id="pick" type="button">เลือกรูปถ่ายกระดาษคำตอบ</button>
+      <input type="file" id="files" accept="image/*" multiple hidden>
     </div>
-    
-    <div id="resList" class="card">
-      <h2>ผลการตรวจคะแนนและการจับคู่รายชื่อ</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>รหัสนักเรียน</th>
-            <th>ชื่อ - นามสกุล</th>
-            <th>คะแนน</th>
-          </tr>
-        </thead>
-        <tbody id="resTable"></tbody>
-      </table>
+    <div id="resList" class="card" hidden>
+      <h2>ผลการตรวจคะแนน</h2>
+      <div id="rows"></div>
     </div>
   </section>
 </div>
 
-<script>
-const LABELS = { th: ['ก', 'ข', 'ค', 'ง', 'จ'], en: ['A', 'B', 'C', 'D', 'E'], num: ['1', '2', '3', '4', '5'] };
-const PAPER_SIZES = { A4: { w: 1240, h: 1754 }, A5: { w: 874, h: 1240 }, Letter: { w: 1275, h: 1650 } };
+<div class="toast"><div id="toastMsg" hidden></div></div>
 
+<script>
+/* LABELS CONSTANTS */
+const LABELS = { th: ['ก', 'ข', 'ค', 'ง', 'จ'], en: ['A', 'B', 'C', 'D', 'E'], num: ['1', '2', '3', '4', '5'] };
+
+/* SIZES DEFINITION IN PIXELS (300 DPI Standard) */
+const PAPER_SIZES = {
+  A4: { w: 1240, h: 1754 },
+  A5: { w: 874, h: 1240 },
+  Letter: { w: 1275, h: 1650 }
+};
+
+/* STATE MANAGEMENT */
 const state = {
-  cfg: { title: 'ข้อสอบประจำภาค', nQ: 20, paperSize: 'A4', defaultC: 4, lab: 'th', withId: true, idDigits: 8 },
-  roster: {}, // Map of id -> name (e.g. {"65001001": "สมชาย ใจดี"})
-  qConfig: [],
-  key: []
+  cfg: {
+    title: 'ข้อสอบวัดผลวิชาการ',
+    nQ: 20,
+    paperSize: 'A4',
+    customW: 1240,
+    customH: 1754,
+    defaultC: 4,
+    lab: 'th',
+    nCols: 'auto',
+    withId: true
+  },
+  qConfig: [], // Stores individual choice count per question e.g. [4, 4, 2, 5, ...]
+  key: [],     // Stores answer key
+  points: 1
 };
 
 function initQConfig() {
-  if (state.qConfig.length < state.cfg.nQ) {
-    for (let i = state.qConfig.length; i < state.cfg.nQ; i++) {
+  const currentLen = state.qConfig.length;
+  if (currentLen < state.cfg.nQ) {
+    for (let i = currentLen; i < state.cfg.nQ; i++) {
       state.qConfig.push(state.cfg.defaultC);
       state.key.push(-1);
     }
-  } else {
+  } else if (currentLen > state.cfg.nQ) {
     state.qConfig = state.qConfig.slice(0, state.cfg.nQ);
     state.key = state.key.slice(0, state.cfg.nQ);
   }
 }
 
-/* DYNAMIC CANVAS SHEET GENERATOR WITH VARIABLE ID DIGITS */
+/* DYNAMIC LAYOUT GENERATOR */
 function makeDynamicLayout() {
-  let W = PAPER_SIZES[state.cfg.paperSize].w, H = PAPER_SIZES[state.cfg.paperSize].h;
+  let W = PAPER_SIZES[state.cfg.paperSize]?.w || state.cfg.customW;
+  let H = PAPER_SIZES[state.cfg.paperSize]?.h || state.cfg.customH;
   const MKC = Math.round(Math.min(W, H) * 0.06);
 
   const L = {
@@ -268,36 +273,45 @@ function makeDynamicLayout() {
       { x: W - MKC, y: H - MKC, s: Math.round(MKC * 0.5) },
       { x: MKC, y: H - MKC, s: Math.round(MKC * 0.5) }
     ],
-    q: [], qNum: []
+    q: [],
+    qNum: [],
+    qConfig: state.qConfig
   };
 
+  let qTop = state.cfg.withId ? Math.round(H * 0.38) : Math.round(H * 0.25);
+  
   if (state.cfg.withId) {
-    L.idCols = state.cfg.idDigits;
-    L.idSp = Math.min(Math.round(W * 0.038), Math.round((W * 0.4) / L.idCols));
-    L.idR = Math.round(L.idSp * 0.35);
+    L.idCols = 8;
+    L.idR = Math.round(W * 0.011);
+    L.idSp = Math.round(W * 0.038);
     L.idSpY = Math.round(H * 0.02);
-    L.idX0 = W - Math.round(W * 0.08) - (L.idCols * L.idSp);
+    L.idX0 = Math.round(W * 0.58);
     L.idY0 = Math.round(H * 0.16);
     L.idBoxY = Math.round(H * 0.11);
     L.id = [];
     for (let d = 0; d < L.idCols; d++) {
       const col = [];
-      for (let v = 0; v < 10; v++) col.push({ x: L.idX0 + d * L.idSp + L.idSp / 2, y: L.idY0 + v * L.idSpY });
+      for (let v = 0; v < 10; v++) col.push({ x: L.idX0 + d * L.idSp, y: L.idY0 + v * L.idSpY });
       L.id.push(col);
     }
   }
 
-  let qTop = state.cfg.withId ? Math.round(H * 0.38) : Math.round(H * 0.22);
-  const left = Math.round(W * 0.1), usable = W - (left * 2);
-  let nCols = Math.max(1, Math.ceil(state.cfg.nQ / 25));
+  const left = Math.round(W * 0.1);
+  const usable = W - (left * 2);
+  
+  let nCols = state.cfg.nCols === 'auto' ? Math.max(1, Math.ceil(state.cfg.nQ / 25)) : parseInt(state.cfg.nCols);
   const rows = Math.ceil(state.cfg.nQ / nCols);
-  const colW = usable / nCols, y0 = qTop, yEnd = H - Math.round(H * 0.1);
+  const colW = usable / nCols;
+  const y0 = qTop, yEnd = H - Math.round(H * 0.1);
   const rowSp = Math.min(Math.round(H * 0.025), (yEnd - y0) / Math.max(1, rows - 1));
 
   for (let q = 0; q < state.cfg.nQ; q++) {
     const col = Math.floor(q / rows), row = q % rows;
-    const colX = left + col * colW, y = y0 + row * rowSp;
-    const nC = state.qConfig[q], sp = Math.min(Math.round(W * 0.038), (colW - 80) / nC);
+    const colX = left + col * colW;
+    const y = y0 + row * rowSp;
+    const nC = state.qConfig[q];
+    const sp = Math.min(Math.round(W * 0.038), (colW - 80) / nC);
+    
     const arr = [];
     for (let c = 0; c < nC; c++) arr.push({ x: colX + Math.round(W * 0.06) + c * sp, y });
     L.q.push(arr);
@@ -308,6 +322,7 @@ function makeDynamicLayout() {
   return L;
 }
 
+/* DRAWING FUNCTION */
 function renderSheetCanvas() {
   initQConfig();
   const L = makeDynamicLayout();
@@ -317,19 +332,21 @@ function renderSheetCanvas() {
   const F = '"IBM Plex Sans Thai", sans-serif';
   const labs = LABELS[state.cfg.lab];
 
+  // Background & Markers
   ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, L.W, L.H);
   ctx.fillStyle = '#000';
   for (const m of L.markers) ctx.fillRect(m.x - m.s / 2, m.y - m.s / 2, m.s, m.s);
 
-  ctx.fillStyle = '#111'; ctx.font = `700 ${Math.round(L.W * 0.03)}px ${F}`;
-  ctx.fillText(state.cfg.title, Math.round(L.W * 0.1), Math.round(L.H * 0.09));
+  // Header Title
+  ctx.fillStyle = '#111'; ctx.font = `700 ${Math.round(L.W * 0.035)}px ${F}`;
+  ctx.fillText(state.cfg.title, Math.round(L.W * 0.1), Math.round(L.H * 0.1));
 
-  // Dynamic Student ID Rendering
+  // Student ID Section
   if (state.cfg.withId) {
-    ctx.font = `600 ${Math.round(L.W * 0.015)}px ${F}`;
-    ctx.fillText(`รหัสนักเรียน (${L.idCols} หลัก)`, L.idX0, Math.round(L.H * 0.09));
+    ctx.font = `600 ${Math.round(L.W * 0.016)}px ${F}`;
+    ctx.fillText('รหัสนักเรียน', L.idX0, Math.round(L.H * 0.09));
     for (let d = 0; d < L.idCols; d++) {
-      ctx.strokeRect(L.idX0 + d * L.idSp + 2, L.idBoxY, L.idSp - 4, L.idSp - 4);
+      ctx.strokeRect(L.idX0 + d * L.idSp - 12, L.idBoxY, L.idSp - 4, L.idSp - 4);
       for (let v = 0; v < 10; v++) {
         const b = L.id[d][v];
         drawBubble(ctx, b.x, b.y, L.idR, String(v), F);
@@ -337,12 +354,14 @@ function renderSheetCanvas() {
     }
   }
 
+  // Question Options Drawing (Per Individual Choice Count)
   for (let q = 0; q < state.cfg.nQ; q++) {
     const n = L.qNum[q];
     ctx.fillStyle = '#222'; ctx.font = `600 ${Math.round(L.W * 0.015)}px ${F}`; ctx.textAlign = 'right';
     ctx.fillText(String(q + 1), n.x, n.y + 4);
 
-    for (let c = 0; c < state.qConfig[q]; c++) {
+    const nC = state.qConfig[q];
+    for (let c = 0; c < nC; c++) {
       drawBubble(ctx, L.q[q][c].x, L.q[q][c].y, L.r, labs[c], F);
     }
   }
@@ -357,103 +376,109 @@ function drawBubble(ctx, x, y, r, label, F) {
   ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(label, x, y + 1);
 }
 
-/* STUDENT ROSTER MANAGEMENT */
-document.getElementById('saveRosterBtn').addEventListener('click', () => {
-  const text = document.getElementById('rosterInput').value;
-  const lines = text.split('\n');
-  state.roster = {};
-
-  lines.forEach(line => {
-    const parts = line.split(',');
-    if (parts.length >= 2) {
-      const id = parts[0].trim();
-      const name = parts[1].trim();
-      if (id) state.roster[id] = name;
-    }
-  });
-
-  renderRosterTable();
-});
-
-document.getElementById('clearRosterBtn').addEventListener('click', () => {
-  state.roster = {};
-  document.getElementById('rosterInput').value = '';
-  renderRosterTable();
-});
-
-function renderRosterTable() {
-  const tbody = document.getElementById('rosterTable');
-  let h = '';
-  const keys = Object.keys(state.roster);
-  keys.forEach(id => {
-    h += `<tr><td class="mono">${id}</td><td>${state.roster[id]}</td></tr>`;
-  });
-  tbody.innerHTML = h;
-  document.getElementById('rosterCount').textContent = keys.length;
-}
-
-/* SIMULATED SCAN RESULTS WITH ROSTER MATCHING */
-document.getElementById('sampleScan').addEventListener('click', () => {
-  const sampleIds = Object.keys(state.roster);
-  let mockId = sampleIds.length > 0 ? sampleIds[Math.floor(Math.random() * sampleIds.length)] : '65001001';
-  let mockName = state.roster[mockId] || '<span style="color:red">ไม่พบในฐานข้อมูล</span>';
-
-  const tbody = document.getElementById('resTable');
-  const count = tbody.children.length + 1;
-  const mockScore = Math.floor(Math.random() * state.cfg.nQ) + 1;
-
-  tbody.innerHTML += `<tr>
-    <td>${count}</td>
-    <td class="mono">${mockId}</td>
-    <td>${mockName}</td>
-    <td class="mono"><b>${mockScore}</b> / ${state.cfg.nQ}</td>
-  </tr>`;
-});
-
-/* CONFIG EVENT LISTENERS */
-document.getElementById('idDigits').addEventListener('input', (e) => {
-  let val = parseInt(e.target.value);
-  if (val >= 1 && val <= 10) {
-    state.cfg.idDigits = val;
-    renderSheetCanvas();
-  }
-});
-
-document.getElementById('withId').addEventListener('change', (e) => {
-  state.cfg.withId = e.target.checked;
-  document.getElementById('idDigitsBox').hidden = !e.target.checked;
-  renderSheetCanvas();
-});
-
-document.getElementById('nQ').addEventListener('input', (e) => {
-  state.cfg.nQ = parseInt(e.target.value) || 20;
-  renderSheetCanvas();
-  renderKeyGrid();
-});
-
-document.getElementById('paperSize').addEventListener('change', (e) => {
-  state.cfg.paperSize = e.target.value;
-  renderSheetCanvas();
-});
-
+/* RENDER STEP 2 GRID WITH PER-QUESTION CHOICE SELECTOR */
 function renderKeyGrid() {
   const el = document.getElementById('keyGrid');
   const labs = LABELS[state.cfg.lab];
   let h = '';
+
   for (let q = 0; q < state.cfg.nQ; q++) {
-    h += `<div class="q"><span class="qn">${q + 1}.</span><span class="opts">`;
-    for (let c = 0; c < state.qConfig[q]; c++) {
-      h += `<button type="button" class="opt ${state.key[q] === c ? 'on good' : ''}" onclick="state.key[${q}]=${c};renderKeyGrid();">${labs[c]}</button>`;
+    const nC = state.qConfig[q];
+    h += `<div class="q">
+      <span class="qn">${q + 1}.</span>
+      <span class="opts">`;
+    for (let c = 0; c < nC; c++) {
+      const active = state.key[q] === c;
+      h += `<button type="button" class="opt ${active ? 'on good' : ''}" onclick="setKey(${q}, ${c})">${labs[c]}</button>`;
     }
-    h += `</span></div>`;
+    h += `</span>
+      <div class="q-cfg">
+        <select onchange="changeQChoice(${q}, this.value)" title="ปรับจำนวนช้อยส์สำหรับข้อนี้">
+          <option value="2" ${nC === 2 ? 'selected' : ''}>2</option>
+          <option value="3" ${nC === 3 ? 'selected' : ''}>3</option>
+          <option value="4" ${nC === 4 ? 'selected' : ''}>4</option>
+          <option value="5" ${nC === 5 ? 'selected' : ''}>5</option>
+        </select>
+      </div>
+    </div>`;
   }
   el.innerHTML = h;
+  const setKeyCount = state.key.filter(k => k >= 0).length;
+  document.getElementById('keyCount').innerHTML = `ตั้งค่าเฉลยแล้ว <b>${setKeyCount}</b> / <b>${state.cfg.nQ}</b> ข้อ`;
 }
 
-/* TAB NAVIGATION */
-[1, 2, 3, 4].forEach(i => {
+/* EVENT HANDLERS & INTERACTIVITY */
+function setKey(q, c) {
+  state.key[q] = state.key[q] === c ? -1 : c;
+  renderKeyGrid();
+}
+
+function changeQChoice(q, count) {
+  state.qConfig[q] = parseInt(count);
+  if (state.key[q] >= state.qConfig[q]) state.key[q] = -1; // Reset answer key if out of bounds
+  renderSheetCanvas();
+  renderKeyGrid();
+}
+
+document.getElementById('paperSize').addEventListener('change', (e) => {
+  state.cfg.paperSize = e.target.value;
+  document.getElementById('customSizeBox').hidden = e.target.value !== 'Custom';
+  renderSheetCanvas();
+});
+
+document.getElementById('pWidth').addEventListener('input', (e) => {
+  state.cfg.customW = parseInt(e.target.value) || 1240;
+  renderSheetCanvas();
+});
+
+document.getElementById('pHeight').addEventListener('input', (e) => {
+  state.cfg.customH = parseInt(e.target.value) || 1754;
+  renderSheetCanvas();
+});
+
+document.getElementById('nQ').addEventListener('input', (e) => {
+  const val = parseInt(e.target.value);
+  if (val >= 1 && val <= 100) {
+    state.cfg.nQ = val;
+    initQConfig();
+    renderSheetCanvas();
+    renderKeyGrid();
+  }
+});
+
+document.getElementById('defaultC').addEventListener('change', (e) => {
+  const c = parseInt(e.target.value);
+  state.cfg.defaultC = c;
+  state.qConfig = state.qConfig.map(() => c);
+  renderSheetCanvas();
+  renderKeyGrid();
+});
+
+document.getElementById('labType').addEventListener('change', (e) => {
+  state.cfg.lab = e.target.value;
+  renderSheetCanvas();
+  renderKeyGrid();
+});
+
+document.getElementById('nCols').addEventListener('change', (e) => {
+  state.cfg.nCols = e.target.value;
+  renderSheetCanvas();
+});
+
+document.getElementById('title').addEventListener('input', (e) => {
+  state.cfg.title = e.target.value;
+  renderSheetCanvas();
+});
+
+document.getElementById('withId').addEventListener('change', (e) => {
+  state.cfg.withId = e.target.checked;
+  renderSheetCanvas();
+});
+
+// TAB SYSTEM
+[1, 2, 3].forEach(i => {
   document.getElementById('t' + i).addEventListener('click', () => {
-    [1, 2, 3, 4].forEach(j => {
+    [1, 2, 3].forEach(j => {
       document.getElementById('p' + j).hidden = (i !== j);
       document.getElementById('t' + j).setAttribute('aria-selected', i === j);
     });
