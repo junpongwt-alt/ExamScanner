@@ -92,7 +92,6 @@ h1, h2, h3 { font-family: var(--f-head); margin: 0; font-weight: 700; line-heigh
 button, input, select, textarea { font: inherit; color: inherit; }
 :focus-visible { outline: 2px solid var(--border-focus); outline-offset: 2px; }
 
-/* Header */
 .mast { display: flex; flex-direction: column; gap: 6px; }
 .brand { display: flex; align-items: center; gap: 12px; }
 .brand .icon-logo {
@@ -103,7 +102,6 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .brand h1 { font-size: 26px; letter-spacing: -0.01em; }
 .lede { margin: 0; color: var(--txt-muted); font-size: 14.5px; max-width: 68ch; }
 
-/* Stepper Tabs */
 .tabs { display: flex; gap: 12px; border-bottom: 1px solid var(--border); padding-bottom: 12px; overflow-x: auto; }
 .tabs button {
   background: none; border: 0; padding: 10px 16px; border-radius: var(--radius);
@@ -119,7 +117,6 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .tabs button[aria-selected="true"] { background: var(--bg-card); color: var(--primary); box-shadow: var(--shadow-sm); }
 .tabs button[aria-selected="true"] b { background: var(--primary); color: #fff; }
 
-/* Panels Layout */
 .panel { display: flex; flex-direction: column; gap: 20px; }
 .split { display: grid; grid-template-columns: 340px minmax(0, 1fr); gap: 24px; align-items: start; }
 
@@ -152,7 +149,6 @@ input[type=number] { font-family: var(--f-mono); }
 .tips { margin: 0; padding-left: 18px; color: var(--txt-muted); font-size: 13px; display: flex; flex-direction: column; gap: 6px; }
 .tips b { color: var(--txt-main); }
 
-/* Preview Desk */
 .desk {
   background: var(--bg-sub); border: 1px solid var(--border); border-radius: var(--radius);
   padding: 24px; display: flex; flex-direction: column; align-items: center; gap: 14px;
@@ -163,7 +159,6 @@ input[type=number] { font-family: var(--f-mono); }
 }
 .cap { margin: 0; font-size: 13px; color: var(--txt-muted); text-align: center; }
 
-/* Control Bar */
 .bar {
   display: flex; flex-wrap: wrap; gap: 14px 18px; align-items: flex-end;
   background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
@@ -176,7 +171,6 @@ input[type=number] { font-family: var(--f-mono); }
 .stat { font: 600 13.5px/1.4 var(--f-mono); color: var(--txt-muted); flex: 1 1 180px; }
 .stat b { color: var(--txt-main); font-weight: 700; }
 
-/* Buttons */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   padding: 9px 16px; border-radius: 8px; border: 1px solid var(--border);
@@ -191,7 +185,6 @@ input[type=number] { font-family: var(--f-mono); }
 .btn.ghost:hover { background: var(--bg-sub); color: var(--txt-main); }
 .btn[disabled] { opacity: 0.55; cursor: not-allowed; }
 
-/* OMR Bubble Grid */
 .qgrid {
   display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px 16px;
   background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
@@ -215,7 +208,6 @@ input[type=number] { font-family: var(--f-mono); }
 .opt.on.warn { background: var(--warn); border-color: var(--warn); color: #fff; }
 .opt.key { border: 2px dashed var(--good); color: var(--good); }
 
-/* Dropzone & Scanner controls */
 .drop {
   border: 2px dashed var(--border); border-radius: var(--radius); padding: 32px 20px;
   display: flex; flex-direction: column; gap: 14px; align-items: center; text-align: center;
@@ -236,7 +228,6 @@ input[type=number] { font-family: var(--f-mono); }
 }
 .note button { background: none; border: 0; padding: 0; color: var(--primary); text-decoration: underline; cursor: pointer; font-weight: 600; }
 
-/* Cards & Tables */
 .card {
   background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
   padding: 20px 22px; display: flex; flex-direction: column; gap: 16px; box-shadow: var(--shadow-sm); min-width: 0;
@@ -262,20 +253,18 @@ tr.err td.errtxt { color: var(--bad); }
 .pill.bad { background: var(--bad-bg); color: var(--bad); }
 .pill.ok { background: var(--good-bg); color: var(--good); }
 
-/* Item Analysis Bars */
 .bars { display: grid; grid-template-columns: repeat(var(--n), minmax(9px, 1fr)); gap: 4px; align-items: end; height: 90px; border-bottom: 1px solid var(--border); }
 .bars span { background: var(--primary); min-height: 2px; border-radius: 3px 3px 0 0; }
 .bars span.low { background: var(--bad); }
 .barlbl { display: grid; grid-template-columns: repeat(var(--n), minmax(9px, 1fr)); gap: 4px; font: 500 10.5px/1.6 var(--f-mono); color: var(--txt-muted); }
 .barlbl span { text-align: center; }
 
-/* Detail View */
 .detail { display: flex; flex-direction: column; gap: 16px; }
 .dhead { display: flex; flex-wrap: wrap; gap: 10px 20px; align-items: center; justify-content: space-between; }
 .dhead h2 { font-size: 18px; }
 .dmeta { display: flex; flex-wrap: wrap; gap: 12px 18px; align-items: center; }
 .dmeta label { font-size: 13px; color: var(--txt-muted); display: flex; gap: 8px; align-items: center; font-weight: 600; }
-.dmeta input { width: 140px; font-family: var(--f-mono); padding: 5px 9px; }
+.dmeta input, .dmeta select { width: 120px; font-family: var(--f-mono); padding: 5px 9px; border-radius: 6px; border: 1px solid var(--border); }
 .dscore { font: 700 24px/1 var(--f-mono); color: var(--primary); }
 .dsplit { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 20px; align-items: start; }
 .dsplit canvas { width: 100%; height: auto; display: block; border-radius: 8px; background: #000; box-shadow: var(--shadow-sm); }
@@ -284,7 +273,6 @@ tr.err td.errtxt { color: var(--bad); }
 .legend { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 12.5px; color: var(--txt-muted); align-items: center; }
 .legend i { display: inline-block; width: 12px; height: 12px; border-radius: 50%; vertical-align: -1px; margin-right: 6px; }
 
-/* Live Scanner Overlay */
 .live { position: fixed; inset: 0; z-index: 100; background: #0B0F17; color: #fff; display: flex; flex-direction: column; }
 .lhead { display: flex; gap: 12px; align-items: center; justify-content: space-between; padding: 14px 20px; background: rgba(15,23,42,0.8); backdrop-filter: blur(8px); }
 .lstat { font-weight: 600; font-size: 15px; }
@@ -302,7 +290,6 @@ tr.err td.errtxt { color: var(--bad); }
 .lbtn { padding: 10px 18px; border-radius: 8px; border: 1px solid #475569; background: #334155; color: #fff; cursor: pointer; font-weight: 600; }
 .lbtn.pri { background: #3B82F6; border-color: #3B82F6; }
 
-/* Light Detector warning overlay */
 .light-warn {
   position: absolute; top: 16px; left: 50%; transform: translateX(-50%);
   background: rgba(245, 158, 11, 0.9); color: #000; padding: 6px 14px;
@@ -310,7 +297,6 @@ tr.err td.errtxt { color: var(--bad); }
   box-shadow: 0 4px 12px rgba(0,0,0,0.3); z-index: 10;
 }
 
-/* Toast Notification */
 .toast { position: fixed; left: 0; right: 0; bottom: 20px; display: flex; justify-content: center; pointer-events: none; z-index: 120; }
 .toast div { background: var(--fill-dark); color: var(--bg-card); padding: 11px 20px; border-radius: 30px; font-size: 14px; font-weight: 500; box-shadow: var(--shadow-lg); }
 
@@ -637,7 +623,6 @@ function bubble(ctx, x, y, r, label, F) {
   ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(label, x, y + 1);
 }
 
-/* Homography Matrix */
 function homography(src, dst) {
   const A = [], b = [];
   for (let i = 0; i < 4; i++) {
@@ -668,7 +653,6 @@ function applyH(H, x, y) {
   return [(H[0] * x + H[1] * y + H[2]) / w, (H[3] * x + H[4] * y + H[5]) / w];
 }
 
-/* Computer Vision Threshold & Marker Detection */
 let _I = null, _O = null, _L = null, _S = null;
 function adaptiveDark(g, w, h) {
   const win = Math.max(15, Math.round(Math.max(w, h) * 0.08) | 1), half = win >> 1;
@@ -784,11 +768,14 @@ const RINGS = [[0, 1], [0.4, 6], [0.8, 12]];
 function readSheet(gray, w, h, L, pts) {
   const src = L.markers.map(m => [m.x, m.y]);
   const H = homography(src, pts);
+  if (!H) return { align: 0, dark: [], idDark: [], formDark: [] };
+  
   const samp = (x, y) => {
     if (x < 0 || y < 0 || x > w - 1.001 || y > h - 1.001) return null;
     const x0 = x | 0, y0 = y | 0, fx = x - x0, fy = y - y0, i = y0 * w + x0;
     return gray[i] * (1 - fx) * (1 - fy) + gray[i + 1] * fx * (1 - fy) + gray[i + w] * (1 - fx) * fy + gray[i + w + 1] * fx * fy;
   };
+
   const meanAt = (cx, cy, r) => {
     const rr = r * 0.6; let s = 0, n = 0;
     for (const [f, k] of RINGS) for (let t = 0; t < k; t++) {
@@ -831,6 +818,7 @@ function readSheet(gray, w, h, L, pts) {
 }
 
 function decideRow(d, T) {
+  if (!d || !d.length) return { v: -1, marks: [] };
   const mx = Math.max.apply(null, d);
   if (mx < T) return { v: -1, marks: [] };
   const marks = [];
@@ -842,12 +830,11 @@ function sensToT(s) { return [0.34, 0.28, 0.22, 0.17, 0.13][Math.min(5, Math.max
 </script>
 
 <script>
-/* ===== Application Logic & UI Controller ===== */
+/* ===== Application Controller ===== */
 (function () {
   const $ = s => document.querySelector(s);
   const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&', '<': '<', '>': '>', '"': '"', "'": ''' }[c]));
   
-  // State Storage
   const state = {
     cfg: { title: 'ข้อสอบปลายภาค', nQ: 30, nC: 4, lab: 'th', withId: true, withForms: false },
     keys: { A: [], B: [], C: [], D: [] },
@@ -911,7 +898,6 @@ function sensToT(s) { return [0.34, 0.28, 0.22, 0.17, 0.13][Math.min(5, Math.max
     clearTimeout(toastT); toastT = setTimeout(() => { el.hidden = true; }, 4200);
   }
 
-  /* Navigation Tabs */
   function showTab(n) {
     [1, 2, 3].forEach(i => {
       $('#p' + i).hidden = i !== n;
@@ -921,7 +907,6 @@ function sensToT(s) { return [0.34, 0.28, 0.22, 0.17, 0.13][Math.min(5, Math.max
   }
   [1, 2, 3].forEach(i => $('#t' + i).addEventListener('click', () => showTab(i)));
 
-  /* Printable Sheet Rendering */
   let fontP = null;
   function loadFonts() {
     if (!fontP) {
@@ -947,23 +932,23 @@ function sensToT(s) { return [0.34, 0.28, 0.22, 0.17, 0.13][Math.min(5, Math.max
     $('#sheetImg').src = cv.toDataURL('image/png');
   }
 
-  /* OMR Key Grid UI */
   function grid(el, o) {
     let h = '';
+    const currentLabels = o.labels || labels();
     for (let q = 0; q < o.n; q++) {
       const s = o.cell(q);
       h += '<div class="q ' + (s.cls || '') + '"><span class="qn">' + (q + 1) + '</span><span class="opts">';
       for (let c = 0; c < o.nC; c++) {
         const on = s.on.indexOf(c) >= 0;
         const cl = 'opt' + (on ? ' on ' + (s.tone || '') : '') + (s.key === c && !(on && s.tone === 'good') ? ' key' : '');
-        h += '<button type="button" class="' + cl + '" data-q="' + q + '" data-c="' + c + '" aria-pressed="' + on + '">' + esc(o.labels[c]) + '</button>';
+        const lblVal = currentLabels[c] !== undefined ? currentLabels[c] : (c + 1);
+        h += '<button type="button" class="' + cl + '" data-q="' + q + '" data-c="' + c + '" aria-pressed="' + on + '">' + esc(lblVal) + '</button>';
       }
       h += '</span></div>';
     }
     el.innerHTML = h;
   }
 
-  /* Step 2 Key Handlers */
   function renderKey() {
     const c = state.cfg, activeKey = state.keys[state.activeForm];
     grid($('#keyGrid'), { n: c.nQ, nC: c.nC, labels: labels(), cell: q => ({ on: activeKey[q] >= 0 ? [activeKey[q]] : [] }) });
@@ -1019,17 +1004,13 @@ function sensToT(s) { return [0.34, 0.28, 0.22, 0.17, 0.13][Math.min(5, Math.max
     save(); renderKey(); renderResults(); renderDetail(); updateKeyWarn(); toast('ล้างเฉลยเรียบร้อยแล้ว');
   });
 
-  /* HEIC Image Support & File Loading */
   async function loadGray(file) {
     let processFile = file;
-    // Check & Convert HEIC image format from iOS
     if (/\.(heic|heif)$/i.test(file.name) && typeof heic2any !== 'undefined') {
       try {
         const convertedBlob = await heic2any({ blob: file, toType: "image/jpeg", quality: 0.8 });
         processFile = Array.isArray(convertedBlob) ? convertedBlob[0] : convertedBlob;
-      } catch (e) {
-        console.warn("HEIC Conversion Failed", e);
-      }
+      } catch (e) { console.warn("HEIC Conversion Failed", e); }
     }
 
     let bmp;
@@ -1074,9 +1055,11 @@ function sensToT(s) { return [0.34, 0.28, 0.22, 0.17, 0.13][Math.min(5, Math.max
     r.ans = []; r.marks = [];
     r.dark.forEach((d, q) => { const x = decideRow(d, T); r.ans[q] = x.v; r.marks[q] = x.marks; });
     
-    r.idAuto = r.idDark.map(d => { const x = decideRow(d, T); return x.v >= 0 ? String(x.v) : (x.v === -1 ? '_' : '?'); }).join('');
+    if (r.idDark) {
+      r.idAuto = r.idDark.map(d => { const x = decideRow(d, T); return x.v >= 0 ? String(x.v) : (x.v === -1 ? '_' : '?'); }).join('');
+    } else { r.idAuto = ''; }
     
-    if (r.cfg.withForms && r.formDark) {
+    if (r.cfg.withForms && r.formDark && r.formDark.length) {
       const fx = decideRow(r.formDark, T);
       r.detectedForm = fx.v >= 0 && fx.v < 4 ? ['A', 'B', 'C', 'D'][fx.v] : 'A';
     } else {
@@ -1125,7 +1108,6 @@ function sensToT(s) { return [0.34, 0.28, 0.22, 0.17, 0.13][Math.min(5, Math.max
     }
   }
 
-  /* Step 3: Render Results Table */
   function updateKeyWarn() {
     const k = state.keys[state.activeForm];
     const done = k.filter(v => v >= 0).length, el = $('#keyWarn');
@@ -1209,7 +1191,6 @@ function sensToT(s) { return [0.34, 0.28, 0.22, 0.17, 0.13][Math.min(5, Math.max
     }
   });
 
-  /* Detail View Editor */
   function renderDetail(full) {
     const r = state.results[state.sel], box = $('#detail');
     if (!r || r.error) { box.hidden = true; return; }
@@ -1283,7 +1264,6 @@ function sensToT(s) { return [0.34, 0.28, 0.22, 0.17, 0.13][Math.min(5, Math.max
     else { r.img = new Image(); r.img.onload = paint; r.img.src = r.thumb; }
   }
 
-  /* CSV Export & JSON Backup */
   $('#exportCsv').addEventListener('click', () => {
     const ok = state.results.filter(r => !r.error);
     if (!ok.length) { toast('ยังไม่มีผลการตรวจที่สมบูรณ์'); return; }
@@ -1333,7 +1313,6 @@ function sensToT(s) { return [0.34, 0.28, 0.22, 0.17, 0.13][Math.min(5, Math.max
     reader.readAsText(file);
   });
 
-  /* Sample Sheet Generator */
   async function makeSample() {
     const c = state.cfg, L = makeLayout(c.nQ, c.nC, c.withId, c.withForms);
     await loadFonts();
@@ -1369,7 +1348,6 @@ function sensToT(s) { return [0.34, 0.28, 0.22, 0.17, 0.13][Math.min(5, Math.max
     catch (e) { toast('สร้างตัวอย่างไม่สำเร็จ: ' + e.message); }
   });
 
-  /* Live Scanner with Lighting Warning */
   const LV = { stream: null, timer: 0 };
   async function liveStart() {
     if (!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia)) { toast('กล้องไม่พร้อมใช้งาน'); return; }
@@ -1392,7 +1370,7 @@ function sensToT(s) { return [0.34, 0.28, 0.22, 0.17, 0.13][Math.min(5, Math.max
     let sum = 0;
     for (let i = 0; i < gray.length; i += 16) sum += gray[i];
     const avg = sum / (gray.length / 16);
-    return avg < 75; // Warning if lighting is too dim
+    return avg < 75;
   }
 
   async function liveLoop() {
@@ -1421,7 +1399,6 @@ function sensToT(s) { return [0.34, 0.28, 0.22, 0.17, 0.13][Math.min(5, Math.max
   $('#liveBtn').hidden = !(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
   $('#liveBtn').addEventListener('click', liveStart);
 
-  /* Wiring Inputs */
   $('#pick').addEventListener('click', () => $('#files').click());
   $('#shoot').addEventListener('click', () => $('#cam').click());
   $('#cam').addEventListener('change', e => { if (e.target.files.length) handleFiles(e.target.files); e.target.value = ''; });
